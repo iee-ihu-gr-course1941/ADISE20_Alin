@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table, td {
+          border: 1px solid black;
+          
+        }
+        table{
+            width: 475px;
+            height: 473px;
+            position: absolute;
+            top: 22px;
+            left: 22px;
+        }
+
+        /* Διαλεγουμε την εβδομη στηλη */
+        /* td:nth-child(7){
+            width: 10px;
+            height: 10px;
+        } */
+    </style>
+</head>
+<body>
+    <img src="backgammon.jpg" width="500px" alt="">
+    <table id="table"></table>
+
+
+
+    <script>
+
+        // Δημιοργουμε τον πινακα
+        $(document).ready(function(){
+            var table = document.getElementById("table");
+
+            for (i=0 ; i<13; i++){
+                var row = table.insertRow(-1);
+                for (j=0; j<13; j++){
+                    var cell1 = row.insertCell(0);
+
+                }
+                
+            }
+            
+            for (i=0;i<13;i++){
+                for (j=0;j<13;j++){
+                    if (i==5 || i==6 || i==7){
+                        table.rows[i].cells[j].setAttribute("class","false")
+                    }else if (j==6){
+                        table.rows[i].cells[j].setAttribute("class","false")
+                    }else{
+                        table.rows[i].cells[j].setAttribute("class","true")
+                    }
+
+                }
+            }
+
+            // var cl = document.getElementsByClassName("false");
+            // for (i=0;i<cl.length;i++){
+            //     cl[i].innerHTML = "dis";
+            // }
+
+
+            var logf = document.querySelector("td:nth-child(7)");
+            logf.setAttribute("width","10px");  
+
+
+        });
+    </script>
+</body>
+</html>
