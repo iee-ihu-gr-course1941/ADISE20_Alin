@@ -36,7 +36,7 @@
                     <button type="submit">εισοδος</button>
                 </div>
                 <div class="create-acc">
-                    <a href="register.html">Δημιουργία λογαριασμού</a>
+                    <a href="register.php">Δημιουργία λογαριασμού</a>
                 </div>   
             </form>
         </div>

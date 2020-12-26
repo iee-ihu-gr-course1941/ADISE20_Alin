@@ -49,11 +49,16 @@
             for (i=0;i<13;i++){
                 for (j=0;j<13;j++){
                     if (i==5 || i==6 || i==7){
-                        table.rows[i].cells[j].setAttribute("class","false")
+                        table.rows[i].cells[j].setAttribute("class","false");
                     }else if (j==6){
-                        table.rows[i].cells[j].setAttribute("class","false")
+                        table.rows[i].cells[j].setAttribute("class","false");
                     }else{
-                        table.rows[i].cells[j].setAttribute("class","true")
+                        table.rows[i].cells[j].setAttribute("class","true");
+                        if (j>6){
+                            table.rows[i].cells[j].innerHTML = eval(i+1) +"," + eval(j);
+                        }else{
+                            table.rows[i].cells[j].innerHTML = eval(i+1) +"," + eval(j+1);
+                        }
                     }
 
                 }

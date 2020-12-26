@@ -41,7 +41,7 @@
                     <button type="submit">εγγραφη</button>
                 </div>
                 <div class="create-acc create-acc-rg">
-                    <a href="login.html">Είσοδος</a>
+                    <a href="login.php">Είσοδος</a>
                 </div>   
             </form>
         </div>
