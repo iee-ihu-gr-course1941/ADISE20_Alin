@@ -5,77 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/backgammon.js"></script>
     <style>
+        body{
+            background-color: wheat;
+        }
         table, td {
           border: 1px solid black;
           color:white;
           
         }
         table{
-            width: 475px;
-            height: 473px;
+            width: 840px;
+            height: 590px;
             position: absolute;
-            top: 22px;
-            left: 22px;
+            top: 29px;
+            left: 30px;
         }
-
-        /* Διαλεγουμε την εβδομη στηλη */
-        /* td:nth-child(7){
-            width: 10px;
+        .piece{
+            position: absolute;
+            width: 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .piece_count_white{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: black;
+            user-select: none;
+            font-size: 24px;
+            pointer-events:none;
+        }
+        .piece_count_black{
+            user-select: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            font-size: 24px;
+            pointer-events:none;
+        }
+        .test{
+            position: relative;
+        }
+        .empty{
+            width: 45px;
             height: 10px;
-        } */
+        }
+        .dice{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 90%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <img src="backgammon.jpg" width="500px" alt="">
-    <table id="table"></table>
-
-
-
-    <script>
-
-        // Δημιοργουμε τον πινακα
-        $(document).ready(function(){
-            var table = document.getElementById("table");
-
-            for (i=0 ; i<13; i++){
-                var row = table.insertRow(-1);
-                for (j=0; j<13; j++){
-                    var cell1 = row.insertCell(0);
-
-                }
-                
-            }
-            
-            for (i=0;i<13;i++){
-                for (j=0;j<13;j++){
-                    if (i==5 || i==6 || i==7){
-                        table.rows[i].cells[j].setAttribute("class","false");
-                    }else if (j==6){
-                        table.rows[i].cells[j].setAttribute("class","false");
-                    }else{
-                        table.rows[i].cells[j].setAttribute("class","true");
-                        if (j>6){
-                            table.rows[i].cells[j].innerHTML = eval(i+1) +"," + eval(j);
-                        }else{
-                            table.rows[i].cells[j].innerHTML = eval(i+1) +"," + eval(j+1);
-                        }
-                    }
-
-                }
-            }
-
-            // var cl = document.getElementsByClassName("false");
-            // for (i=0;i<cl.length;i++){
-            //     cl[i].innerHTML = "dis";
-            // }
-
-
-            var logf = document.querySelector("td:nth-child(7)");
-            logf.setAttribute("width","10px");  
-
-
-        });
-    </script>
+    <img src="images/backgammon_table.svg" style="width: 880px;"  alt="">
+    <!-- <table id="table"></table> -->
+    <div id="backgammon_board"></div>
+    <br>
+    <div id="game_initializer">
+        <input type="text" id="player_username">
+        <select name="" id="pcolor">
+            <option value="W">W</option>
+            <option value="B">B</option>
+        </select>
+        <button id="backgammon_login">Login to game</button>
+    </div>
+    <div id="game_info">
+    </div>
+    <br>
+    <div id="backgammon_reset">Reset Board</div>
+    <div id='move_div'>
+        Δώσε κίνηση (x1 y1 x2 y2): <input id='the_move'>  <button id='do_move' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ</button><br>
+        </div>
 </body>
 </html>
