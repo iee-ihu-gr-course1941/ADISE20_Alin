@@ -4,6 +4,7 @@ html{
 body{
     height: 100%;
     overflow: hidden;
+    /* background-color: rgba(0,0,0,0.9); */
     
 }
 h3{
@@ -185,12 +186,146 @@ h3{
 
 
 
+.cont{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 238, 238);   
+    background-image: url(images/bg.png);
+    background-repeat: repeat no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* MAIN MENU */
+.main_menu{
+    position: absolute;
+    width: 550px;
+    height: 88vh;
+    top: 45px;
+    left: 40%;
+    transform: translate(-50%);
+    background-color: #242323;
+    border-radius: 2px;
+    transition: .3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.mm_active{
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#main_header{
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+
+#astr{
+    position: absolute;
+    font-size: 40px;
+    color: white;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#astr::before{
+    content: "";
+    display: block;
+    width: 110px;
+    height: 2px;
+    position: absolute;
+    background-color: white;
+    left: -115px;
+    top: 27%;
+}
+
+#astr::after{
+    content: "";
+    display: block;
+    width: 110px;
+    height: 2px;
+    position: absolute;
+    background-color: white;
+    left: 20px;
+    top: 27%;
+}
+
+.main_btns{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 12em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_btns button{
+    color: white;
+    width: 400px;
+    padding: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border:none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#play_btn{
+    background-color: #f5163b ;
+}
+
+#play_btn:hover{
+    background-color: #d41737 ;
+}
+
+#bot_btn{
+    background-color: #6d6b6c;
+}
+
+#bot_btn:hover{
+    background-color: #535353;
+}
+
+#pl_fr_btn{
+    background-color: #3da859;
+}
+
+#pl_fr_btn:hover{
+    background-color: #318d49;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* FREINDS LIST */
+
 .container-friends{
     position: fixed;
-    /* right: -200px; */
     right: 0;
     bottom: 0;
     top: 0;
@@ -215,7 +350,7 @@ h3{
     position: relative;
     top: 0;
     width: 100%;
-    height: 8%;
+    height: 3.75em;
     background-color : #242323;
 }
 
@@ -327,6 +462,7 @@ h3{
 .friend{
     position: relative;
     padding: 1rem 2.5rem 1.5rem 2.5rem;
+    cursor: pointer;
 }
 
 .friend:hover{
@@ -340,6 +476,15 @@ h3{
 .friend-icon{
     color: #ccb27c;
 }
+
+.notif{
+    color: #e61437;
+    position: absolute;
+    font-size: 18px;
+    left: 10px;
+    top: 25px;
+}
+
 
 
 .remove{
@@ -380,6 +525,422 @@ username-main-span{
     background-color: #8a8a8a;
 }
 
+
+
+
+
+/* CHAT */
+.chat{
+    position: absolute;
+    bottom: 0px;
+    height: 60vh;
+    width: 400px;
+    background-color: rgba(0,0,0,0.8);
+    right: 18rem;
+    transition: .3s;
+    display: none;
+}
+
+.chat_side{
+    right: 93px !important;
+}
+
+
+.chatting_with{
+    position: relative;
+    height: 3.5em;
+    width: 100%;
+    border-bottom: 1px solid wheat;
+}
+
+.chatting_icon{
+    padding: 12px 0 0 10px;
+}
+
+.chatting_online{
+    padding-top: 32px;
+    left: 30px;
+}
+
+.skip_chat{
+    color: white;
+    position: absolute;
+    bottom: 15px;
+    padding-left: 10px;
+}
+
+#min{
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    cursor: pointer;
+    color: wheat;
+}
+
+.chat_messages{
+    position: relative;
+    width: 100%;
+    height: 47vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: white;
+}
+
+.chat_messages *{
+    padding-left: 14px;
+}
+
+.chat_messages::-webkit-scrollbar{
+    width: 9px;
+    background-color: #333333;
+    border-radius: 10px;
+}
+
+.chat_messages::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.chat_messages::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #8a8a8a;
+}
+
+
+
+#chat_input{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-left: 10px;
+    width: 96%;
+    height: 2.4em;
+    font-size: 16px;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LOBBY */
+.lobby{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: coral;
+    z-index: -1;
+}
+
+.lobby_notifications{
+    position: relative;
+    top: 50%;
+    left: 10%;
+    transform: translate(-15%,-50%);
+    width: 700px;
+    height: 80vh;
+    border: 1px solid rgba(0,0,0,0.8);
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 5px #000000;
+}
+
+.lobby_messages{
+    position: absolute;
+    bottom: 3.7em;
+    width: 100%;
+    height:90%;
+}
+
+.lobby_chat{
+    position: absolute;
+    height: 3.5em;
+    bottom: 0px;
+    right: -1px;
+    left: 0;
+    border: 2px solid #4f8fb8;
+    border-bottom: none;
+    border-radius: 5px;
+}
+
+.lobby_chat_input{
+    width: 90%;
+    height: 88%;
+    padding-left: 10px;
+    border:none;
+    font-size: 16px;
+    
+}
+
+.lobby_chat_input:focus{
+    outline: none;
+}
+
+
+.send_icon{
+    position: relative;
+    top: 8px;
+    right: -2px;
+    color: #4f8fb8;
+    font-size: 34px;
+    cursor: pointer;
+}
+
+.send_icon:hover{
+    color: #45708c;
+}
+
+.control_panel{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-40%,-50%);
+    width: 300px;
+    height: 60vh;
+    border: 1px solid rgba(0,0,0,0.8);
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 5px #000000;
+}
+
+
+.lobby_players{
+    position: relative;
+    padding: 15px 10px 0px 20px;
+}
+
+.player{
+    padding-bottom: 30px;
+}
+
+.player > span{
+    padding-left: 10px;
+    letter-spacing: 0.08em;
+}
+
+.player_icon{
+    color: #474338;
+}
+
+
+.control_panel_btns{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: -1px;
+    height: 5.3em;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.control_btns_row1{
+    width: 100%;
+    height: 42%;
+}
+
+#invite_player_btn{
+    width: 100%;
+    height: 100%;
+    background-color: #48a3e0;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#invite_player_btn:hover{
+    background-color: #4291c5;
+}
+
+.control_btns_row2{
+    display: flex;
+    height: 58%;
+}
+
+#leave_lobby_btn{
+    width: 50%;
+    height: 100%;
+    color: white;
+    font-size: 14px;
+    background-color: #343a40;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+#leave_lobby_btn:hover{
+    background-color: #444c53;
+}
+
+#start_game_btn{
+    width: 50%;
+    height: 100%;
+    color: white;
+    font-size: 14px;
+    background-color: #dc3545;
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+#start_game_btn:hover{
+    background-color: #c22232;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* INVITE POP-UP */
+.invite_modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal_content{
+    position: absolute;
+    top: 3.3em;
+    left: 32em;
+    width: 32em;
+    height: 85vh;
+    background-color: white;
+    border-radius: 4px;
+}
+
+#close_modal{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#invite{
+    position: absolute;
+    width: 100px;
+    height: 2em;
+    bottom: 10px;
+    left: 13.8em;
+    background-color: #48a3e0;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#invite:hover{
+    background-color:  #4291c5;
+}
+
+
+
+
+
+#inv_fr_header{
+    position: absolute;
+    top: 5em;
+    left: 10.2em;
+    font-size: 20px;
+}
+
+#inv_fr_header::before{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    background: black;
+    left: -110px;
+    top: 45%;
+}
+
+#inv_fr_header::after{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    background: black;
+    left: 120px;
+    top: 45%;
+}
+
+
+
+
+.invite_friends{
+    position: relative;
+    top: 10em;
+    font-size: 18px;
+}
+
+
+input[type="radio"]{
+    margin-left: 7em;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
 
 
 
