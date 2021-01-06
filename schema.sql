@@ -68,6 +68,30 @@ INSERT INTO `board_empty` VALUES (1,1,NULL,NULL),(1,2,NULL,NULL),(1,3,NULL,NULL)
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dice`
+--
+
+DROP TABLE IF EXISTS `dice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dice` (
+  `die1` int(11) NOT NULL,
+  `die2` int(11) NOT NULL,
+  `piece_color` enum('B','W') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dice`
+--
+
+LOCK TABLES `dice` WRITE;
+/*!40000 ALTER TABLE `dice` DISABLE KEYS */;
+INSERT INTO `dice` VALUES (1,1,'W'),(1,2,'W'),(1,3,'W'),(1,4,'W'),(1,5,'W'),(1,6,'W'),(2,1,'W'),(2,2,'W'),(2,3,'W'),(2,4,'W'),(2,5,'W'),(2,6,'W'),(3,1,'W'),(3,2,'W'),(3,3,'W'),(3,4,'W'),(3,5,'W'),(3,6,'W'),(4,1,'W'),(4,2,'W'),(4,3,'W'),(4,4,'W'),(4,5,'W'),(4,6,'W'),(5,1,'W'),(5,2,'W'),(5,3,'W'),(5,4,'W'),(5,5,'W'),(5,6,'W'),(6,1,'W'),(6,2,'W'),(6,3,'W'),(6,4,'W'),(6,5,'W'),(6,6,'W'),(1,1,'B'),(1,2,'B'),(1,3,'B'),(1,4,'B'),(1,5,'B'),(1,6,'B'),(2,1,'B'),(2,2,'B'),(2,3,'B'),(2,4,'B'),(2,5,'B'),(2,6,'B'),(3,1,'B'),(3,2,'B'),(3,3,'B'),(3,4,'B'),(3,5,'B'),(3,6,'B'),(4,1,'B'),(4,2,'B'),(4,3,'B'),(4,4,'B'),(4,5,'B'),(4,6,'B'),(5,1,'B'),(5,2,'B'),(5,3,'B'),(5,4,'B'),(5,5,'B'),(5,6,'B'),(6,1,'B'),(6,2,'B'),(6,3,'B'),(6,4,'B'),(6,5,'B'),(6,6,'B');
+/*!40000 ALTER TABLE `dice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `game_status`
 --
 
@@ -88,6 +112,7 @@ CREATE TABLE `game_status` (
 
 LOCK TABLES `game_status` WRITE;
 /*!40000 ALTER TABLE `game_status` DISABLE KEYS */;
+INSERT INTO `game_status` VALUES ('started','W',NULL,'2021-01-03 22:08:02');
 /*!40000 ALTER TABLE `game_status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -120,6 +145,8 @@ DROP TABLE IF EXISTS `players`;
 CREATE TABLE `players` (
   `username` varchar(20) DEFAULT NULL,
   `piece_color` enum('B','W') NOT NULL,
+  `token` varchar(100) DEFAULT NULL,
+  `last_action` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`piece_color`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -130,31 +157,9 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
+INSERT INTO `players` VALUES ('asdsdg','B','7345b2bda07424e431bea211ddcec487',NULL),('yfjyfh','W','8d0b0c93baf3efadc7a0949a33757c92',NULL);
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'test'
---
-/*!50003 DROP PROCEDURE IF EXISTS `clean_board` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clean_board`()
-BEGIN
-REPLACE INTO board SELECT * FROM board_empty;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -165,4 +170,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-26  2:12:59
+-- Dump completed on 2021-01-04  0:18:32

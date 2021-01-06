@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/backgammon.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<link href="jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet">
     <style>
         body{
             background-color: wheat;
@@ -22,7 +24,7 @@
             top: 29px;
             left: 30px;
         }
-        .piece{
+        td > img{
             position: absolute;
             width: 70%;
             top: 50%;
@@ -82,9 +84,13 @@
     <div id="game_info">
     </div>
     <br>
-    <div id="backgammon_reset">Reset Board</div>
+    <!-- <div id="backgammon_reset">Reset Board</div> -->
     <div id='move_div'>
         Δώσε κίνηση (x1 y1 x2 y2): <input id='the_move'>  <button id='do_move' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ</button><br>
         </div>
+    Δώσε κίνηση (x1 y1): <input id='the_move_src'> (x2 y2):
+    <select id='the_move_dest'></select>
+    <button id='do_move2' class='btn btn-primary'>ΚΑΝΕ ΤΗΝ ΚΙΝΗΣΗ 2</button><br>
+    </div>
 </body>
 </html>
