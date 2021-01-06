@@ -63,7 +63,7 @@ function show_board($input) {
 	// $b=current_color($input['token']);
 	// if($b) {
 	// 	show_board_by_player($b);
-	// } else {	
+	// } else {
 		header('Content-type: application/json');
 		print json_encode(read_board(), JSON_PRETTY_PRINT);
 	// }
@@ -177,6 +177,7 @@ function p_moves($board,$b,$x,$y,$dice1,$dice2) {
 				// Αν ο προορισμός είναι εντός σκακιέρας και δεν υπάρχει δικό μου πιόνι
 				$move=['x'=>$x2, 'y'=>$y2];
 				$moves[]=$move;
+			}
 		}
 	}
 	
