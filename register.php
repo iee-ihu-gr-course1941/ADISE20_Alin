@@ -1,22 +1,35 @@
 <?php
+  $error_msg = "";
 if(isset($_GET["error"])){
   if ($_GET["error"] == "emptyinput"){
-    echo "<p>συμπληρώστε ολα τα στοιχεία<p>";
+    $error_msg = "συμπληρώστε ολα τα στοιχεία";
+    //echo $error_msg;
+    //echo "<p>συμπληρώστε ολα τα στοιχεία<p>";
   }
   else if ($_GET["error"] == "invalidusername"){
-    echo "<p>το ονομα δεν επιτρέπεται<p>";
+    $error_msg = "το ονομα δεν επιτρέπεται";
+    //echo $error_msg;
+   // echo "<p>το ονομα δεν επιτρέπεται<p>";
   }
   else if ($_GET["error"] == "invalidemail"){
-    echo "<p>το email δεν ειναι σωστο<p>";
+    $error_msg = "το email δεν ειναι σωστο";
+    //echo $error_msg;
+    //echo "<p>το email δεν ειναι σωστο<p>";
   }
   else if ($_GET["error"] == "passwordsnotsame"){
-    echo "<p>οι κωδικοί δεν ταιριάζουν<p>";
+    $error_msg = "οι κωδικοί δεν ταιριάζουν";
+    //echo $error_msg;
+   // echo "<p>οι κωδικοί δεν ταιριάζουν<p>";
   }
   else if ($_GET["error"] == "usernametaken"){
-    echo "<p>το ονομα υπάρχει ηδη<p>";
+    $error_msg = "το ονομα υπάρχει ηδη";
+    //echo $error_msg;
+    //echo "<p>το ονομα υπάρχει ηδη<p>";
   }
   else if ($_GET["error"] == "stmtfailed"){
-    echo "<p>κατι πηγε λαθος<p>";
+    $error_msg = "κατι πηγε λαθος";
+    //echo $error_msg;
+    //echo "<p>κατι πηγε λαθος<p>";
   }
 }
  ?>
@@ -30,6 +43,9 @@ if(isset($_GET["error"])){
 </head>
 <body class="register-bg">
     <div class="container container-register">
+    <div>
+    <span class="error-block"><?php  echo $error_msg; ?></span>
+  </div>
         <div class="login">
             <div class="header">
                 <h3>Εγγραφή</h3>

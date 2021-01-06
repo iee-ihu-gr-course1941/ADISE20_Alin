@@ -1,10 +1,15 @@
 <?php
+$error_msg = "";
 if(isset($_GET["error"])) {
   if ($_GET["error"] == "emptyinput") {
-    echo "<p>συμπληρώστε ολα τα στοιχεία<p>";
+      $error_msg = "συμπληρώστε ολα τα στοιχεία";
+    //  echo $error_msg;
+   // echo "<p>συμπληρώστε ολα τα στοιχεία<p>";
   }
  else if ($_GET["error"] == "wronglogin"){
-    echo "<p>το ονομα/κωδικος δεν ειναι σωστα<p>";
+     $error_msg = "το ονομα/κωδικος δεν ειναι σωστα";
+    //  echo "<p>το ονομα/κωδικος δεν ειναι σωστα<p>";
+    //echo $error_msg;
   }
 }
  ?>
@@ -44,6 +49,9 @@ if(isset($_GET["error"])) {
                 <div class="btn">
                     <button type="submit" class="play-btn"><i class="fas fa-play"></i>επισκεπτης</button>
                     <button type="submit" name="submit">εισοδος</button>
+                </div>
+                <div>
+                <span class="error-block"><?php  echo $error_msg; ?></span>
                 </div>
                 <div class="create-acc">
                     <a href="register.php">Δημιουργία λογαριασμού</a>
