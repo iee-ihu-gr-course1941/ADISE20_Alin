@@ -266,7 +266,6 @@ function update_status(data) {
 		x=0;
 		// do play
 		if(game_stat_old.p_turn!=game_status.p_turn) {
-			window.alert("asdadsdas");
 			fill_board();
 		}
 		$('#move_div').show(1000);
