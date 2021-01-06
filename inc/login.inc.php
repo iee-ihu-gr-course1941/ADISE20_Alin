@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
 
 
   require_once 'config.php';
-  require_once 'functions.inc.php';
+  require_once 'login_logoutfunc.php';
 
 
   if (emptyInputLogin($username, $password) !== false){

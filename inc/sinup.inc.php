@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
    $passwordrepeat = $_POST["passwordrepeat"];
 
    require_once 'config.php';
-   require_once 'functions.inc.php';
+   require_once 'login_logoutfunc.php';
 
   if (emptyInputSingup($username, $email, $password, $passwordrepeat) !== false){
       header("Location: ../register.php?error=emptyinput");
