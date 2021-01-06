@@ -4,7 +4,7 @@ var board={};
 var last_update=new Date().getTime();
 var timer=null;
 var sc = 0;
-
+var dicep= [];
 
 
 $(function () {
@@ -17,17 +17,19 @@ $(function () {
 	game_status_update();
 	$('#the_move_src').change( update_moves_selector);
 	$('#do_move2').click( do_move2);
-	$(document).on("click", "img.dice" , function() {
-		roll_dice();
-	});
+	// $(document).on("click", "img.dice" , function() {
+	// 	roll_dice();
+	// });
+	// roll_dice();
+	$('.dice').click(roll_dice);
 });
 
 function draw_empty_board(p) {
 
 	if(p!='B') {p='W';}
 	var draw_init = {
-		'W': {i1:1,i2:31,istep:1,j1:1,j2:14,jstep:1},
-		'B': {i1:30,i2:0,istep:-1, j1:13,j2:0,jstep:-1}
+		'B': {i1:30,i2:0,istep:-1,j1:13,j2:0,jstep:-1},
+		'W': {i1:1,i2:31,istep:1, j1:1,j2:14,jstep:1}
 	};
 	var s=draw_init[p];
 
@@ -40,15 +42,15 @@ function draw_empty_board(p) {
 			}else if(j>7){
 				
 				if (i==6 || i==7 || i==8){
-					t += '<td class="chess_square test" id="square_'+(j-1)+'_'+i+'"></td>'; 
+					t += '<td class="backgammon_square test" id="square_'+(j-1)+'_'+i+'"></td>'; 
 				}else{
-					t += '<td class="chess_square test" id="square_'+(j-1)+'_'+i+'"></td>'; 
+					t += '<td class="backgammon_square test" id="square_'+(j-1)+'_'+i+'"></td>'; 
 				}
 			}else{
 				if(i==6 || i==7 || i==8){
-					t += '<td class="chess_square test" id="square_'+(j-1)+'_'+i+'"></td>';
+					t += '<td class="backgammon_square test" id="square_'+(j-1)+'_'+i+'"></td>';
 				}else{
-					t += '<td class="chess_square test" id="square_'+j+'_'+i+'"></td>';
+					t += '<td class="backgammon_square test" id="square_'+j+'_'+i+'"></td>';
 				}
 			}
 		}
@@ -67,7 +69,7 @@ function fill_board() {
 		headers: {"X-Token": me.token},
 			dataType: "json",
 			contentType: 'application/json',
-			data: JSON.stringify( {token: me.token}),
+			data: JSON.stringify( {token: me.token, dc1: dicep[0], dc2: dicep[1]}),
 			success: fill_board_by_data });
 }
 
@@ -100,11 +102,11 @@ function fill_board_by_data(data) {
 		
 
 	    var im = (o.piece!=null)?'<img class="piece '+pc+'" id="'+img_id+'" src="images/'+c+'.svg">':'';
-		$(id_table).append(im);
+		$(id_table).html(im);
 		
 	}
 	// fill_board_stack_count();
-	fill_board_dice();
+	// fill_board_dice();
 
 	// $('.ui-droppable').droppable( "disable" );
 		
@@ -176,50 +178,29 @@ function fill_board_by_data(data) {
 // }
 
 
-function fill_board_dice(){
-
-	let roll1 = Math.floor((Math.random() * 6) + 1);
-	let roll2 = Math.floor((Math.random() * 6) + 1);
-
-	var dice1 ='<img class="dice" src="images/d'+roll1+'.svg">';
-	var dice2 ='<img class="dice" src="images/d'+roll2+'.svg">';
-	$('#square_9_15').append(dice1);
-	$('#square_10_15').append(dice2);
-
-}
-
 
 function roll_dice(){
 	let roll1 = Math.floor((Math.random() * 6) + 1);
 	let roll2 = Math.floor((Math.random() * 6) + 1);
 
-	var dice1 ='<img class="dice" src="images/d'+roll1+'.svg">';
-	var dice2 ='<img class="dice" src="images/d'+roll2+'.svg">';
-	$('#square_9_15').html(dice1);
-	$('#square_10_15').html(dice2);
+	dicep[0]= roll1;
+	dicep[1] =roll2;
+
+	let dice1 = "images/d"+roll1+".svg";
+	let dice2 = "images/d"+roll2+".svg";
+
+	$("#dice1").attr("src", dice1);
+	$("#dice2").attr("src", dice2);
+
+
+	// $('#dice1').html(dice1);
+	// $('#dice2').html(dice2);
 }
 
 
 
 
 
-// function login_to_game() {
-// 	if($('#player_username').val()=='') {
-// 		alert('You have to set a username');
-// 		return;
-// 	}
-// 	var p_color = $('#pcolor').val();
-// 	draw_empty_board(p_color);
-// 	fill_board();
-	
-// 	$.ajax({url: "backgammon.php/players/"+p_color, 
-// 			method: 'PUT',
-// 			dataType: "json",
-// 			contentType: 'application/json',
-// 			data: JSON.stringify( {username: $('#player_username').val(), piece_color: p_color}),
-// 			success: login_result,
-// 			error: login_error});
-// }
 
 function login_to_game() {
 	if($('#player_username').val()=='') {
@@ -296,16 +277,18 @@ function do_move() {
 			method: 'PUT',
 			dataType: "json",
 			contentType: 'application/json',
-			data: JSON.stringify( {x: a[2], y: a[3]}),
+			data: JSON.stringify( {x: a[2], y: a[3], dc1: dicep[0], dc2: dicep[1]}),
 			headers: {"X-Token": me.token},
 			success: move_result,
 			error: login_error});
 	
 }
+
 function move_result(data){
+	game_status_update();
 	fill_board_by_data(data);
-	$('#move_div').hide(1000);
 }
+
 
 function update_moves_selector() {
 	$('.backgammon_square').removeClass('pmove').removeClass('tomove');
@@ -346,16 +329,6 @@ function click_on_piece(e) {
 	update_moves_selector();
 }
 
-function click_on_piece(e) {
-	var o=e.target;
-	if(o.tagName!='TD') {o=o.parentNode;}
-	if(o.tagName!='TD') {return;}
-	
-	var id=o.id;
-	var a=id.split(/_/);
-	$('#the_move_src').val(a[1]+' ' +a[2]);
-	update_moves_selector();
-}
 
 function start_dragging ( event, ui ) {
 	var x;
