@@ -31,6 +31,9 @@
 
 
         $(document).ready(function(){
+          // var timer =setInterval(function(){
+               $("#f").load("inc/getf.php");
+          // },5000);
             $(".sidebar-right-btn").click(function(){
                     $(".container-friends").toggleClass("active");
                     $(".user").toggleClass("user-sidebar");
@@ -67,17 +70,17 @@
                 window.alert("Remove");
                 ev.stopPropagation();
             });
-
             $(".add-friend").click(function(){
-  				if(document.getElementById('searchuser').style.display!='none'){
-    				$("#searchuser").hide();
-    				$("#request").hide();}
-  				else{
-    				$("#searchuser").show();
-					$("#request").show();}
-				});
+                              if(document.getElementById('searchuser').style.display!='none'){
+                                $("#searchuser").hide();
+                                $("#request").hide();}
+                              else{
+                                $("#searchuser").show();
+                                $("#request").show();}
+                            });
 
         });
+
     </script>
 
 </head>

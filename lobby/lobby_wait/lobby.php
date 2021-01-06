@@ -2,7 +2,8 @@
 
 <?php
 include_once '../freind.php';
-
+require_once '../../inc/config.php';
+require_once '../../inc/lobbysfunc.inc.php';
    ?>
 
 
@@ -19,19 +20,12 @@ include_once '../freind.php';
         </div>
 
         <div class="control_panel">
-            <div class="lobby_players">
-                <div class="player">
-                    <i class="fas fa-user-circle fa-2x player_icon"></i>
-                    <?php
 
-                      echo '<span class="username-main-span">'.$_SESSION["user"].'</span>';
-                    ?>
-                
-                </div>
-                <div class="player">
-                    <i class="fas fa-user-circle fa-2x player_icon"></i>
-                    <span>Player 2</span>
-                </div>
+            <div class="lobby_players">
+              <?php
+                  player2($conn)
+
+              ?>
             </div>
 
             <div class="control_panel_btns">
@@ -40,7 +34,10 @@ include_once '../freind.php';
                 </div>
                 <div class="control_btns_row2">
                     <button id="leave_lobby_btn">Leave Lobby</button>
-                    <button id="start_game_btn">Start Game</button>
+                  <form action="../../inc/Board.inc.php" method="post">
+
+                    <button name="Board" id="start_game_btn">Start Game</button>
+                  </form>
                 </div>
             </div>
         </div>

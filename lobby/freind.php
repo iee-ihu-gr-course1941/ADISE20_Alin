@@ -1,7 +1,7 @@
 
 <?php
 include_once 'header.php';
-include_once 'inc/functions.inc.php';
+include_once 'inc/friendsfunc.php';
 include_once 'inc/config.php';
 session_start();
 // session_regenerate_id(true);
@@ -17,6 +17,7 @@ session_start();
 
    ?>
 <div class="cont">
+  <div class="notification">
        <div class="container-friends">
            <div class="user">
                <i class="fas fa-user-circle fa-2x user-icon"></i>
@@ -33,13 +34,18 @@ session_start();
                    echo '<span class="username-main-span">'.$_SESSION["user"].'</span>';
              ?>
 
-               <</div>
-               <i class="fas fa-plus fa-lg add-friend" id="add-friend"></i>
+               </div>
+               <i class="fas fa-plus fa-lg add-friend"></i>
                <i id="sidebar-left-btn" class="fas fa-chevron-right fa-lg sidebar-right-btn"></i>
            </div>
+           <div class="search-user">
+             <form action="inc/add.inc.php" method="post">
+                      <button name='add' type="add" id="request" ><i class="fa fa-search"></i></button>
+                           <input type="text" id='searchuser' placeholder="Search.." name="user">
+                         </form>
+                      </div>
 
-
-           <div class="friends-list">
+           <div id= "f" class="friends-list">
 
                    <?php
                   if(!do_you_have_friends($conn,$_SESSION['userid'])){
@@ -50,41 +56,11 @@ session_start();
                     else{
                       get_all_friends($conn,$_SESSION['userid']);
                     }
+        get_all_fr($conn,$_SESSION['userid']);
 
 
 
 
-             //  if(!get_all_friends($conn,$_SESSION['userid'])){
-
-             //
-             //                         }
-             //          else {
-             //
-             //      echo ' <div class="friend">
-             //           <i class="fas fa-comment fa-flip-horizontal notif"></i>
-             //           <i class="fas fa-user-circle fa-2x friend-icon"></i>
-             //       <div class="username-main">
-             //         <span class="username-main-span">',get_all_friends($conn,$_SESSION['userid']),"</span>"
-             //          ,"<i class='fas fa-circle avatar online'></i>
-             //       </div>
-             //       <i class='fas fa-trash-alt remove'></i>
-             //   </div>
-             //   </div>";
-             //
-             //
-             //  echo ' <div class="friend">
-             //       <i class="fas fa-comment fa-flip-horizontal notif"></i>
-             //       <i class="fas fa-user-circle fa-2x friend-icon"></i>
-             //  <div class="friend offline">
-             //       <i class="fas fa-user-circle fa-2x friend-icon"></i>
-             //       <div class="username-main">
-             //           <span class="username-main-span">',get_all_friends($conn,$_SESSION['userid']),"</span>",
-             //          " <i class='fas fa-circle avatar offline-icon'></i>
-             //       </div>
-             //       <i class='fas fa-trash-alt remove'></i>
-             //   </div>
-             //   </div>";
-             // }
                ?>
         </div>
     </div>
