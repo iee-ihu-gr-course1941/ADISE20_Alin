@@ -1,0 +1,40 @@
+body{
+  background-color: #eda366;
+}
+table{
+  background-color: #514d59;
+  color: white;
+  opacity: 0.9;
+  border: 1px solid red;
+  width: 60%;
+ margin-left: 250px;
+
+  margin-top:20px;
+}
+
+#container td, #container th {
+  border: 1px ridge red;
+  padding: 10px;
+}
+table th{
+  text-align:center;
+}
+table tr,td{
+  width: 100px;
+  height: 12px;
+}
+
+.btn_join{
+  float:right;
+  height:40px;
+  width:60px;
+}
+#btn_create{
+  margin-top:100px;
+}
+#gname{
+  margin-left:153px;
+}
+.input_detail{
+  width:120px;
+}
